@@ -48,11 +48,55 @@ Podemos revisar la vista detalle usando la ruta: <http://localhost:8100/detalle>
 
 ### 4 Transformar título de barra de navegación en variable
 
+Primero utilizaremos el componente para barra de navegación de ionic 4 y lo incertamos en `<ion-header>` en el html del home y de detalle. Luego el título lo dejamos dentro de doble llave para indicar que el valor viene desde la clase que controla la vista:
+
+```html
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    {{ tituloPagina }}
+  </ion-title>
+</ion-toolbar>
+```
+
+(de paso también borrar el contenido dentro de `<ion-content>`)
+
+Ahora en el archivo controlador, _home.page.ts_ y _detalle.page.ts_ agregamos la variable **tituloPagina** justo antes del constructor.
+
 ### 5 Agregar imágenes en la barra de navegación
+
+Agregamos un logo a _/src/assets_
+
+Y la barra de título nos queda ahora:
+
+```html
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-title>
+    {{ tituloPagina }}
+  </ion-title>
+  <img id="logo-titulo" src="./assets/logo.png" />
+</ion-toolbar>
+```
+
+En el caso de la imagen de mi ejemplo, esta muy grande, por lo que agregamos al scss (en el del home podemos borrar todo el resto que viene de ejemplo):
+
+```css
+#logo-titulo {
+    width: 10em;
+    position: absolute;
+    right: 1em;
+    top: 0.4em;
+}
+```
 
 ### 6 Crear una lista
 
-### 7 Utilizar un objeto json para el contenido
+### 7 Utilizar un objeto json para el contenido de la lista
 
 ### 8 Transformar el header en componente
 
