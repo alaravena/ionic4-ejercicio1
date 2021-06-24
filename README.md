@@ -15,6 +15,14 @@ ionic start ionic4-ejercicio1 blank --type=angular --cordova
 
 ### 2 Crear iconos y splash
 
+Modificar archivos _icon.png_ y _splash.png_ y luego usar
+
+```bash
+ionic cordova resources
+```
+
+(sirve para comprobar el funcionamiento de cordova)
+
 ### 3 Agregar una página de detalle
 
 ### 4 Transformar título de barra de navegación en variable
