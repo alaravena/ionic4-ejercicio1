@@ -25,6 +25,27 @@ ionic cordova resources
 
 ### 3 Agregar una página de detalle
 
+```bash
+ionic generate page pages/detalle
+```
+
+Esto creará 6 archivos dentro de app/pages/detalle y además agregará a _app-routing.module.ts_ el path
+
+Aqui como buena práctica podemos trasladar la carpeta de la página _home_, creada por el template 'blank' dentro de la carpeta pages.
+En VSC pregunta por las importaciones y las corrige. Si lo hacemos manualmente, debemos cambiar el path del homeen _app-routing.module.ts_, en las importaciones, por:
+
+```ts
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+```
+
+Es un buen punto para probar si todo funciona correctamente con
+
+```bash
+ionic serve
+```
+
+Podemos revisar la vista detalle usando la ruta: <http://localhost:8100/detalle>
+
 ### 4 Transformar título de barra de navegación en variable
 
 ### 5 Agregar imágenes en la barra de navegación
