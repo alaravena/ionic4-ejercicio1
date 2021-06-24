@@ -11,14 +11,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
+  <ion-list *ngIf="listaPersonajes">
+    <ion-item *ngFor='let personaje of listaPersonajes'>
       <ion-avatar slot="start">
-        <img src='...'>
+        <img [src]='personaje.image'>
       </ion-avatar>
       <ion-label>
-        <h2>titulo</h2>
-        <h3>subtitulo</h3>
+          <h2>{{ personaje.name }}</h2>
+          <h3>{{ personaje.homeworld }}</h3>
       </ion-label>
       <ion-icon class="ff" name="arrow-forward"></ion-icon>
     </ion-item>

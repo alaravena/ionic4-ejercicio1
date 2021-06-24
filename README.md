@@ -115,6 +115,31 @@ Se utiliza el componente `<ion-list>` y se agrega al html del home.
 
 ### 7 Utilizar un objeto json para el contenido de la lista
 
+Utilizamos en json que esta en el drive del curso y lo agregamos al controlador del home antes del constructor.
+
+```ts
+listaPersonajes: any = [{'AQUI EL JSON'}
+```
+
+En el html agregamos las directivas estrucurales ngIf para evitar errores si no existe el json y ngFor para el loop que repetirá el item de la lista:
+
+```html
+<ion-content>
+  <ion-list *ngIf="listaPersonajes">
+    <ion-item *ngFor='let personaje of listaPersonajes'>
+      <ion-avatar slot="start">
+        <img [src]='personaje.image'>
+      </ion-avatar>
+      <ion-label>
+          <h2>{{ personaje.name }}</h2>
+          <h3>{{ personaje.homeworld }}</h3>
+      </ion-label>
+      <ion-icon class="ff" name="arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+```
+
 ### 8 Transformar el header en componente
 
 ### 9 Navegar a vista detalle, traspasando información
