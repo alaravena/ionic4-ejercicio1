@@ -96,6 +96,23 @@ En el caso de la imagen de mi ejemplo, esta muy grande, por lo que agregamos al 
 
 ### 6 Crear una lista
 
+Se utiliza el componente `<ion-list>` y se agrega al html del home.
+
+```html
+<ion-list>
+    <ion-item>
+        <ion-avatar slot="start">
+            <img src='...'>
+        </ion-avatar>
+        <ion-label>
+            <h2>titulo</h2>
+            <h3>subtitulo</h3>
+        </ion-label>
+        <ion-icon class="ff" name="arrow-forward"></ion-icon>
+    </ion-item>
+</ion-list>
+```
+
 ### 7 Utilizar un objeto json para el contenido de la lista
 
 ### 8 Transformar el header en componente
