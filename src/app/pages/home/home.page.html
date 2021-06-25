@@ -1,13 +1,5 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>
-      {{ tituloPagina }}
-    </ion-title>
-    <img id="logo-titulo" src="./assets/logo.png" />
-  </ion-toolbar>
+  <app-encabezado [pageTitle]="tituloPagina" ></app-encabezado>
 </ion-header>
 
 <ion-content>

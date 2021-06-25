@@ -8,12 +8,16 @@ import { DetallePageRoutingModule } from './detalle-routing.module';
 
 import { DetallePage } from './detalle.page';
 
+import { ComponentsModule } from './../../components/components.module';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetallePageRoutingModule
+    DetallePageRoutingModule,
+    ComponentsModule
   ],
   declarations: [DetallePage]
 })

@@ -142,6 +142,79 @@ En el html agregamos las directivas estrucurales ngIf para evitar errores si no 
 
 ### 8 Transformar el header en componente
 
+Primero creamos un modulo para los componentes
+
+```bash
+ionic generate module components
+```
+
+Automáticamente nos crea la carpeta components
+Ahora creamos el componente:
+
+```bash
+ionic generate component components/encabezado
+```
+
+Que nos crea 3 archivos. Trasladamos el html del encabezado que tenemos en home al html del encabezdo componente.
+Para que siga funcionando el título dinámico, debemos agregar al typescript del componente, justo debajo del inicio de la clase, una variable que se avisa que el valor debe ser entregado al momento de usar el compoenente:
+
+```ts
+@Input() pageTitle;
+```
+
+Se debe importar el decorador Input desde **'@angular/core'**
+
+El html debe usarse en el titulo `{{pageTitle}}`. No usamos el mismo nombre de variable que teníamos originalmente porque, como veremos mas adelante, la variable de la página le dará el valor al título a traves de una directiva.
+
+El código css que teníamos en _home.page.scss_ lo trasladamos al css del componente
+
+Ahora se debe configurar el archivo _components/components.module.ts_ para que funcionen correctamente los componentes que usen componentes de ionic (esto se hace solo una vez), asi como también disponibilizar los componentes para el resto de la aplicación (este se hace por cada componente). El modulo quedaría asi:
+
+```ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule }  from '@ionic/angular';
+
+import { EncabezadoComponent } from './encabezado/encabezado.component';
+
+@NgModule({
+  declarations: [
+    EncabezadoComponent,
+    //aqui declaramos todos los componentes
+  ],
+  imports: [
+    CommonModule,
+    IonicModule
+  ],
+  exports: [
+    EncabezadoComponent,
+    //aqui exportamos todos los componentes
+  ]
+})
+export class ComponentsModule { }
+```
+
+Debemos importar este modulo en cada una de las páginas donde queramos usar los componentes, importándolo en el archivo de _home.module.ts_ y _detalle.module.ts_
+
+```ts
+import { ComponentsModule } from './../../components/components.module';
+
+@NgModule({
+  imports: [
+    //...//
+    ComponentsModule,
+  ],
+
+```
+
+Ahora esta listo para usarlo en el html tanto del home como del detalle, usando el selector del componente (definido en el controlador del componente). Como hemos definido el titulo como variable, en el html del las páginas donde lo usamos, se define a traves de directiva:
+
+```html
+<ion-header>
+  <app-encabezado [pageTitle]="tituloPagina" ></app-encabezado>
+</ion-header>
+```
+
 ### 9 Navegar a vista detalle, traspasando información
 
 ### 10 Usar componentes ionic para visualización del detalle
