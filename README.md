@@ -1,10 +1,11 @@
-# Ionic 4 -Ejercicio 1
+# Ionic 4 - Ejercicio 1
 
-Paso a paso de la solución del ejercicio de módulo 1 den curso de entrenamiento de ionic 4 Duoc UC 2021
+Paso a paso de la solución del ejercicio de módulo 1 en curso de entrenamiento de ionic 4 para docentes Duoc UC 2021
 
 ## Comenzando 🚀
 
 Si descargan este repositorio, no olviden de ejecutar _npm install_
+
 Los commit van en el mismo orden que la ejecución del ejercicio
 
 ### 1 Crear una app en blanco
@@ -32,6 +33,7 @@ ionic generate page pages/detalle
 Esto creará 6 archivos dentro de app/pages/detalle y además agregará a _app-routing.module.ts_ el path
 
 Aqui como buena práctica podemos trasladar la carpeta de la página _home_, creada por el template 'blank' dentro de la carpeta pages.
+
 En VSC pregunta por las importaciones y las corrige. Si lo hacemos manualmente, debemos cambiar el path del homeen _app-routing.module.ts_, en las importaciones, por:
 
 ```ts
@@ -149,6 +151,7 @@ ionic generate module components
 ```
 
 Automáticamente nos crea la carpeta components
+
 Ahora creamos el componente:
 
 ```bash
@@ -156,6 +159,7 @@ ionic generate component components/encabezado
 ```
 
 Que nos crea 3 archivos. Trasladamos el html del encabezado que tenemos en home al html del encabezdo componente.
+
 Para que siga funcionando el título dinámico, debemos agregar al typescript del componente, justo debajo del inicio de la clase, una variable que se avisa que el valor debe ser entregado al momento de usar el compoenente:
 
 ```ts
