@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -95,6 +97,15 @@ export class HomePage {
     }
   ];
 
-  constructor() {}
+  constructor(public navCtrl: NavController) {}
+
+  gotoDetalles(personaje: any) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+          personaje: JSON.stringify(personaje)
+      }
+    };
+  this.navCtrl.navigateForward(['detalle/'], navigationExtras);
+  };
 
 }

@@ -217,4 +217,53 @@ Ahora esta listo para usarlo en el html tanto del home como del detalle, usando 
 
 ### 9 Navegar a vista detalle, traspasando información
 
+Como debemos traspasar un objeto y no solo un valor, conviene manejarlo desde el controlador, para eso crearemos una método dentro de la clase que maneja la vista **home** y será activada desde la flecha, en el html, pasando el objeto completo:
+
+```html
+<ion-icon class="ff" name="arrow-forward" (click)="gotoDetalles(personaje)"></ion-icon>
+```
+
+Agregamos entonces la función dentro de la clase en el _home.page.ts_:
+
+```ts
+import { NavController } from '@ionic/angular';
+import { NavigationExtras } from '@angular/router';
+
+//...
+//Dentro de la clase, debajo de las variables que tenemos declaradas como parámetros
+constructor(public navCtrl: NavController) {}
+
+  gotoDetalles(personaje: any) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+          personaje: JSON.stringify(personaje)
+      }
+    };
+  this.navCtrl.navigateForward(['detalle/'], navigationExtras);
+  };
+```
+
+Ahora en _detalle.page.ts_ debemos recibir esos datos:
+
+```ts
+import { ActivatedRoute } from '@angular/router';
+
+//...
+export class DetallePage implements OnInit {
+
+  tituloPagina = 'Detalle';
+  personaje = null;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(params => {
+        this.personaje = JSON.parse(params.personaje);
+    });
+  }
+
+  ngOnInit() {
+      //Esto nos sirve para revisar en la consola si efectivamente llegó el objeto
+    console.log(this.personaje);
+  }
+```
+
 ### 10 Usar componentes ionic para visualización del detalle
