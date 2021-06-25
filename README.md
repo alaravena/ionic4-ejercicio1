@@ -267,3 +267,30 @@ export class DetallePage implements OnInit {
 ```
 
 ### 10 Usar componentes ionic para visualización del detalle
+
+Lo primero que podemos hacer es que el título de la página se actualice con el nombre del personaje, para eso en el controlador, actualizamos le método ngOnInit:
+
+```ts
+  ngOnInit() {
+    console.log(this.personaje);
+    this.tituloPagina = this.personaje.name;
+  }
+```
+
+Ahora todo el trabajo queda en el html. Podemos usar un **ion-card**
+
+```html
+<ion-content>
+  <ion-card>
+    <img [src]="personaje.image" />
+    <ion-card-header>
+      <ion-card-subtitle>{{personaje.homeworld}}</ion-card-subtitle>
+      <ion-card-title>{{personaje.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Mas información en
+      <i>{{personaje.wiki}}</i>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+```

@@ -19,6 +19,7 @@ export class DetallePage implements OnInit {
 
   ngOnInit() {
     console.log(this.personaje);
+    this.tituloPagina = this.personaje.name;
   }
 
 }
