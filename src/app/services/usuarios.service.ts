@@ -10,7 +10,7 @@ export class UsuariosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  obtenerListadoUsuarios(page: number): Promise <any> {
+  obtenerListadoUsuarios(): Promise <any> {
     return new Promise ((resolve, reject) => {
         this.httpClient.get(this.urlBase)
         .subscribe(res => {
