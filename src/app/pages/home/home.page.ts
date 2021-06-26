@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    private usuariosService: UsuariosService
+    private usuariosService: UsuariosService,
+    public alertController: AlertController
     ) {
       this.listarUsuarios();
     }
@@ -31,6 +33,41 @@ export class HomePage {
             console.error(error);
           }
       );
+  }
+
+  async presentAlertPrompt() {
+    const alert = await this.alertController.create({
+      header: 'Crear Usuario',
+      inputs: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'Nombre'
+        },
+        {
+          name: 'job',
+          type: 'text',
+          placeholder: 'Trabajo'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Agregar',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   gotoDetalles(personaje: any) {
